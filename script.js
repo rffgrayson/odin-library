@@ -13,4 +13,10 @@ function addBookToLibrary (title) {
 addBookToLibrary('Naruto');
 addBookToLibrary('HarryPotter');
 
-console.log (myLibrary);
+function displayArray () {
+    for (let i = 0; i < myLibrary.length; i++) {
+        console.log(myLibrary[i])
+    };
+}
+
+displayArray();
