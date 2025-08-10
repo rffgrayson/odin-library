@@ -24,8 +24,23 @@ const bookBox = document.querySelector("#library-section");
                 <h3>${myLibrary[i].title}</h3>
                 <p>ID: ${myLibrary[i].id}</p>
             </div>
-        `;   
+        `
+        ;   
     };
 }
 
 displayArray();
+
+const newBtn = document.querySelector(".new-button");
+const inputValue = document.querySelector("#title");
+
+newBtn.addEventListener ("click", (e)=> {
+    e.preventDefault();
+    console.log("Test");
+        if (inputValue.value === "") {
+            console.log("error");
+        } else {
+            console.log(`${inputValue.value}`);
+        }
+}
+);
