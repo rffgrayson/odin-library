@@ -57,9 +57,11 @@ newBtn.addEventListener ("click", (e)=> {
 }
 );
 
-const removeBtn = document.querySelector(".remove-button");
-
-removeBtn.addEventListener ("click", () => {
-    const removeBtnInd = removeBtn.getAttribute("data-book-id");
-    console.log(removeBtnInd);
+bookBox.addEventListener("click",(e)=> {
+    if (e.target.classList.contains("remove-button")) {
+        console.log (e);
+        console.log (e.target);
+        const removeBtn = e.target.getAttribute("data-book-id");
+        console.log (removeBtn);
+    }
 })
