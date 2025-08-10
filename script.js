@@ -19,7 +19,7 @@ const bookBox = document.querySelector("#library-section");
    
 function displayBook (book) {
         bookBox.innerHTML +=  `
-            <div class="book">
+            <div class="book" data-book-id = "${book.id}">
                 <h3>${book.title}</h3>
                 <p>ID: ${book.id}</p>
                  <button class="remove-button" data-book-id="${book.id}">Remove</button>
@@ -59,9 +59,18 @@ newBtn.addEventListener ("click", (e)=> {
 
 bookBox.addEventListener("click",(e)=> {
     if (e.target.classList.contains("remove-button")) {
-        console.log (e);
-        console.log (e.target);
-        const removeBtn = e.target.getAttribute("data-book-id");
-        console.log (removeBtn);
+        const bookId = e.target.getAttribute("data-book-id");
+        removeBook(bookId);
     }
 })
+
+
+function removeBook (bookId) {
+    const bookIndex = myLibrary.findIndex(book => book.id === bookId);
+    if (bookIndex !== -1) 
+        {
+        myLibrary.splice(bookIndex, 1);
+        }
+    const bookDiv = document.querySelector(`[data-book-id="${bookId}"]`);
+    bookDiv.remove();
+};
