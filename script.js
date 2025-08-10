@@ -8,17 +8,16 @@ function Book (title) {
 function addBookToLibrary (title) {
     const book = new Book (title);
     myLibrary.push(book);
+    return book;
 }
 
 addBookToLibrary('Naruto');
 addBookToLibrary('HarryPotter');
 
-
-function displayArray () {
 const bookBox = document.querySelector("#library-section");
-
-    for (let i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
+   
+function displayArray () {
+     for (let i = 0; i < myLibrary.length; i++) {
         bookBox.innerHTML +=  `
             <div class="book">
                 <h3>${myLibrary[i].title}</h3>
@@ -33,14 +32,29 @@ displayArray();
 
 const newBtn = document.querySelector(".new-button");
 const inputValue = document.querySelector("#title");
+const errorMessage = document.querySelector("#error-message");
+
 
 newBtn.addEventListener ("click", (e)=> {
     e.preventDefault();
     console.log("Test");
-        if (inputValue.value === "") {
-            console.log("error");
+        if (inputValue.value.trim() === "") {
+            errorMessage.textContent = "Please insert a book title";
+            inputValue.focus();
         } else {
-            console.log(`${inputValue.value}`);
+            errorMessage.textContent = "";
+            const newBook = addBookToLibrary(inputValue.value);
+            console.log (myLibrary);
+            console.log (newBook);    
+            bookBox.innerHTML +=  
+            `
+            <div class="book">
+                <h3>${newBook.title}</h3>
+                <p>ID: ${newBook.id}</p>
+            </div>
+            `
+        ;
+        inputValue.value = '';
         }
 }
 );
