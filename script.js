@@ -3,6 +3,7 @@ const myLibrary = [];
 function Book (title) {
     this.title = title;
     this.id = crypto.randomUUID();
+    this.remove = false;
 }
 
 function addBookToLibrary (title) {
@@ -16,19 +17,25 @@ addBookToLibrary('HarryPotter');
 
 const bookBox = document.querySelector("#library-section");
    
-function displayArray () {
-     for (let i = 0; i < myLibrary.length; i++) {
+function displayBook (book) {
         bookBox.innerHTML +=  `
             <div class="book">
-                <h3>${myLibrary[i].title}</h3>
-                <p>ID: ${myLibrary[i].id}</p>
-            </div>
-        `
-        ;   
-    };
+                <h3>${book.title}</h3>
+                <p>ID: ${book.id}</p>
+                 <button class="remove-button" data-book-id="${book.id}">Remove</button>
+                 </div>
+        `;
+    }
+
+function originalDisplay () {
+    for ( let i=0; i < myLibrary.length; i++) {
+        book = myLibrary[i];
+        console.log(book);
+        displayBook (book);
+    } 
 }
 
-displayArray();
+originalDisplay();
 
 const newBtn = document.querySelector(".new-button");
 const inputValue = document.querySelector("#title");
@@ -37,24 +44,22 @@ const errorMessage = document.querySelector("#error-message");
 
 newBtn.addEventListener ("click", (e)=> {
     e.preventDefault();
-    console.log("Test");
         if (inputValue.value.trim() === "") {
             errorMessage.textContent = "Please insert a book title";
             inputValue.focus();
         } else {
             errorMessage.textContent = "";
             const newBook = addBookToLibrary(inputValue.value);
-            console.log (myLibrary);
-            console.log (newBook);    
-            bookBox.innerHTML +=  
-            `
-            <div class="book">
-                <h3>${newBook.title}</h3>
-                <p>ID: ${newBook.id}</p>
-            </div>
-            `
+            displayBook(newBook);
         ;
         inputValue.value = '';
         }
 }
 );
+
+const removeBtn = document.querySelector(".remove-button");
+
+removeBtn.addEventListener ("click", () => {
+    const removeBtnInd = removeBtn.getAttribute("data-book-id");
+    console.log(removeBtnInd);
+})
