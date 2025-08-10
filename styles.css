@@ -1,0 +1,9 @@
+#library-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgb(161, 211, 194);
+    height: 100%;
+    width: fit-content;
+}
