@@ -26,10 +26,11 @@ function displayBook (book) {
             <div class="book" data-book-id = "${book.id}">
                 <h3>${book.title}</h3>
                 <p>ID: ${book.id}</p>
-                <button class="status-button" data-book-id="${book.id}">Status: Not Yet</button>
-                 </div>
-                 <button class="remove-button" data-book-id="${book.id}">Remove</button>
-                 </div>
+                <button class="status-button" data-book-id="${book.id}">Change Status:</button>
+                <p class="read-status">${book.read? "Read" : "Not Yet" }</p>
+                <button class="remove-button" data-book-id="${book.id}">Remove</button>     
+            </div>
+                 
         `;
     }
 
@@ -68,6 +69,7 @@ bookBox.addEventListener("click",(e)=> {
         if (e.target.classList.contains("remove-button")) {
             removeBook(bookId);
         } if (e.target.classList.contains("status-button")) {
+            console.log("first touch");
             changeStatus(bookId);
         }
 })
@@ -85,8 +87,16 @@ function removeBook (bookId) {
 
 
 function changeStatus (bookId) {
-    const bookStatus = myLibrary.find(book => book.id === bookId);
-    if (bookStatus) {
-        bookStatus.statusChange();
+    console.log ("touch");
+    const targetBook = myLibrary.find(book => book.id === bookId);
+    console.log (targetBook);
+    console.log("try");
+    if (targetBook) {
+        targetBook.statusChange();
+        const statusDiv = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
+        console.log (statusDiv);
+        statusDiv.textContent = targetBook.read? "Read" : "Not Yet";
     }
+
+
 }
