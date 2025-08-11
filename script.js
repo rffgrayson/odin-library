@@ -3,7 +3,6 @@ const myLibrary = [];
 function Book (title) {
     this.title = title;
     this.id = crypto.randomUUID();
-    this.remove = false;
 }
 
 function addBookToLibrary (title) {
