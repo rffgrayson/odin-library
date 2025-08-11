@@ -3,7 +3,12 @@ const myLibrary = [];
 function Book (title) {
     this.title = title;
     this.id = crypto.randomUUID();
+    this.read = false;
 }
+
+Book.prototype.statusChange = function () {
+    this.read = !this.read;
+};
 
 function addBookToLibrary (title) {
     const book = new Book (title);
@@ -21,6 +26,8 @@ function displayBook (book) {
             <div class="book" data-book-id = "${book.id}">
                 <h3>${book.title}</h3>
                 <p>ID: ${book.id}</p>
+                <button class="status-button" data-book-id="${book.id}">Status: Not Yet</button>
+                 </div>
                  <button class="remove-button" data-book-id="${book.id}">Remove</button>
                  </div>
         `;
@@ -57,10 +64,12 @@ newBtn.addEventListener ("click", (e)=> {
 );
 
 bookBox.addEventListener("click",(e)=> {
-    if (e.target.classList.contains("remove-button")) {
-        const bookId = e.target.getAttribute("data-book-id");
-        removeBook(bookId);
-    }
+    const bookId = e.target.getAttribute("data-book-id");
+        if (e.target.classList.contains("remove-button")) {
+            removeBook(bookId);
+        } if (e.target.classList.contains("status-button")) {
+            changeStatus(bookId);
+        }
 })
 
 
@@ -73,3 +82,11 @@ function removeBook (bookId) {
     const bookDiv = document.querySelector(`[data-book-id="${bookId}"]`);
     bookDiv.remove();
 };
+
+
+function changeStatus (bookId) {
+    const bookStatus = myLibrary.find(book => book.id === bookId);
+    if (bookStatus) {
+        bookStatus.statusChange();
+    }
+}
