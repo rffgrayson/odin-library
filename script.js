@@ -24,12 +24,16 @@ const bookBox = document.querySelector("#library-section");
 function displayBook (book) {
         bookBox.innerHTML +=  `
             <div class="book" data-book-id = "${book.id}">
-                <h3>${book.title}</h3>
-                <p>ID: ${book.id}</p>
+               <div class="info-section">
+                  <h3>${book.title}</h3>
+                  <p>ID: ${book.id}</p>
+               </div>
+               <div class="button-section">
                 <button class="status-button" data-book-id="${book.id}">Change Status:</button>
                 <p class="read-status">${book.read? "Read" : "Not Yet" }</p>
                 <button class="remove-button" data-book-id="${book.id}">Remove</button>     
-            </div>
+               </div>   
+             </div>
                  
         `;
     }
