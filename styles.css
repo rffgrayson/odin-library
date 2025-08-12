@@ -1,3 +1,10 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
 #library-section {
     display: flex;
     flex-direction: column;
@@ -18,12 +25,12 @@
     border-radius: 10px;
     padding: 15px;
     margin: 10px;
-    width: 300px;
+    width: fit-content;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .book h3 {
@@ -44,8 +51,7 @@
 }
 
 .book:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: yellow;
     transition: all 0.3s ease;
 }
 
@@ -54,4 +60,26 @@
     font-size: 14px;
     margin-top: 5px;
     min-height: 20px;
+}
+
+.button-section {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.button-section button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button-section p {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
