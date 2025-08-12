@@ -30,7 +30,7 @@ function displayBook (book) {
                </div>
                <div class="button-section">
                 <button class="status-button" data-book-id="${book.id}">Change Status:</button>
-                <p class="read-status">${book.read? "Read" : "Not Yet" }</p>
+                <p class="read-status">${book.read? "Read" : "Not Read" }</p>
                 <button class="remove-button" data-book-id="${book.id}">Remove</button>     
                </div>   
              </div>
@@ -93,13 +93,19 @@ function removeBook (bookId) {
 function changeStatus (bookId) {
     console.log ("touch");
     const targetBook = myLibrary.find(book => book.id === bookId);
-    console.log (targetBook);
-    console.log("try");
+    console.log (`targetBook =`, targetBook);
     if (targetBook) {
         targetBook.statusChange();
         const statusDiv = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
-        console.log (statusDiv);
-        statusDiv.textContent = targetBook.read? "Read" : "Not Yet";
+        console.log (`statusDiv=`, statusDiv);
+        statusDiv.textContent = targetBook.read? "Read" : "Not Read";
+
+         if (targetBook.read) {
+            statusDiv.classList.remove("not-read");
+            statusDiv.classList.toggle("read");
+         } else {
+            statusDiv.classList.remove("read");
+            statusDiv.classList.toggle("not-read");}
     }
 
 
