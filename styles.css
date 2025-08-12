@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 
 #library-section {
@@ -73,13 +72,31 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.button-section p {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-}
-
-button:hover {
+.status-button:hover {
   transform: scale(1.05);
   transition: all 0.3s ease;
+  background-color: rgb(166, 171, 19);
+}
+
+.remove-button:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  background-color: rgb(171, 19, 19);
+}
+
+.read-status {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+
+.read-status.read {
+  color: #2c5530;
+}
+
+.read-status.not-read {
+  color: rgb(76, 11, 11);
 }
