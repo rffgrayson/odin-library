@@ -4,6 +4,30 @@
   padding: 0;
 }
 
+form {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.new-button {
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.new-button:hover {
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  background-color: rgba(19, 171, 77, 0.799);
+}
+
+.error-message {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
 #library-section {
     display: flex;
     flex-direction: column;
