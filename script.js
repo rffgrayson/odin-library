@@ -14,17 +14,45 @@ class Book {
     }
 }
 
+class Library {
+    constructor() {
+        this.book = [];
+    }
 
-function addBookToLibrary (title) {
+    addBook (title) {
     const book = new Book (title);
     myLibrary.push(book);
     return book;
+    }
+
+    removeBook (bookId) {
+    const bookIndex = myLibrary.findIndex(book => book.id === bookId);
+    if (bookIndex !== -1) {
+     this.book.splice(bookIndex, 1);
+     }
+    }
+
+    
+}
+// class LibraryUI {
+//     constructor () {
+//      this.bookBox = document.querySelector("#library-section");
+//      this.newBtn = document.querySelector(".new-button");
+//      this.inputValue = document.querySelector("#title");
+//      this.errorMessage = document.querySelector("#error-message");
+//      const bookDiv = document.querySelector(`[data-book-id="${bookId}"]`);
+//      bookDiv.remove();
+//     }
+// }
+
+function addBookToLibrary (title) {
+    
+    
 }
 
 addBookToLibrary('Naruto');
 addBookToLibrary('HarryPotter');
 
-const bookBox = document.querySelector("#library-section");
    
 function displayBook (book) {
         bookBox.innerHTML +=  `
@@ -53,9 +81,8 @@ function originalDisplay () {
 
 originalDisplay();
 
-const newBtn = document.querySelector(".new-button");
-const inputValue = document.querySelector("#title");
-const errorMessage = document.querySelector("#error-message");
+const 
+
 
 
 newBtn.addEventListener ("click", (e)=> {
@@ -84,27 +111,13 @@ bookBox.addEventListener("click",(e)=> {
 })
 
 
-function removeBook (bookId) {
-    const bookIndex = myLibrary.findIndex(book => book.id === bookId);
-    if (bookIndex !== -1) 
-        {
-        myLibrary.splice(bookIndex, 1);
-        }
-    const bookDiv = document.querySelector(`[data-book-id="${bookId}"]`);
-    bookDiv.remove();
-};
 
-
-function changeStatus (bookId) {
-    console.log ("touch");
+changeStatus (bookId) {
     const targetBook = myLibrary.find(book => book.id === bookId);
-    console.log (`targetBook =`, targetBook);
     if (targetBook) {
         targetBook.statusChange();
         const statusDiv = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
-        console.log (`statusDiv=`, statusDiv);
         statusDiv.textContent = targetBook.read? "Read" : "Not Read";
-
          if (targetBook.read) {
             statusDiv.classList.remove("not-read");
             statusDiv.classList.toggle("read");
@@ -112,6 +125,4 @@ function changeStatus (bookId) {
             statusDiv.classList.remove("read");
             statusDiv.classList.toggle("not-read");}
     }
-
-
-}
+    }
