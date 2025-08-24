@@ -8,13 +8,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
+    <div class="app-header">
+        <h1 class="app-title">本の図書館</h1>
+        <p class="app-subtitle">Book Library Collection</p>
+    </div>
+    
+    <div class="decorative-line"></div>
+    
     <form action="#" method="POST">
-        <input type="text" id="title" maxlength="18" name="title">
+        <input type="text" id="title" maxlength="18" name="title" placeholder="本のタイトルを入力">
+        <button class="new-button" type="button">本を追加</button>
         <div id="error-message" class="error-message"></div>
-        <button class="new-button">add books</button>
     </form>
-    <div id="library-section"></div>
+    
+    <div id="library-section">
+        <!-- Sample book to show the design -->
+        <div class="book">
+            <div class="book-content">
+                <div class="book-info">
+                    <h3>Sample Book Title</h3>
+                    <p><strong>Author:</strong> Sample Author</p>
+                    <p><strong>Pages:</strong> 250</p>
+                    <div class="read-status read">既読 - Read</div>
+                </div>
+                <div class="button-section">
+                    <button class="status-button">Toggle Status</button>
+                    <button class="remove-button">Remove</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="book">
+            <div class="book-content">
+                <div class="book-info">
+                    <h3>Another Book</h3>
+                    <p><strong>Author:</strong> Another Author</p>
+                    <p><strong>Pages:</strong> 320</p>
+                    <div class="read-status not-read">未読 - Unread</div>
+                </div>
+                <div class="button-section">
+                    <button class="status-button">Toggle Status</button>
+                    <button class="remove-button">Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script src="./script.js">
 
     </script>
