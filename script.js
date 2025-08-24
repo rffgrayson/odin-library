@@ -31,9 +31,10 @@ class Library {
      this.book.splice(bookIndex, 1);
      }
     }
-
     
 }
+
+
 // class LibraryUI {
 //     constructor () {
 //      this.bookBox = document.querySelector("#library-section");
