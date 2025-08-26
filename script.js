@@ -49,7 +49,7 @@ class LibraryUI {
     }
 
     displayBook (book) {
-        bookBox.innerHTML +=  `
+        this.libSection.innerHTML +=  `
             <div class="book" data-book-id = "${book.id}">
              <div class="book-content">
                 <div class="book-info">
@@ -65,6 +65,8 @@ class LibraryUI {
             </div>
         `;
     }
+
+
 }
 
 
