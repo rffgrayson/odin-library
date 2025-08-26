@@ -48,7 +48,23 @@ class LibraryUI {
      this.initializeEventListener();
     }
 
-
+    displayBook (book) {
+        bookBox.innerHTML +=  `
+            <div class="book" data-book-id = "${book.id}">
+             <div class="book-content">
+                <div class="book-info">
+                    <h3>${book.title}</h3>
+                    <p>ID: ${book.id}</p>
+                    <div class="read-status">${book.read? "既読 Read" : "未読 - Unread" }</div>
+                </div>
+                <div class="button-section">
+                    <button class="status-button"data-book-id="${book.id}">Change Status</button>
+                    <button class="remove-button" data-book-id="${book.id}">Remove</button>
+                </div>
+             </div>
+            </div>
+        `;
+    }
 }
 
 
@@ -80,21 +96,7 @@ class LibraryUI {
 // }
 
    
-// function displayBook (book) {
-//         bookBox.innerHTML +=  `
-//             <div class="book" data-book-id = "${book.id}">
-//                <div class="info-section">
-//                   <h3>${book.title}</h3>
-//                   <p>ID: ${book.id}</p>
-//                </div>
-//                <div class="button-section">
-//                 <button class="status-button" data-book-id="${book.id}">Change Status:</button>
-//                 <div class="read-status">${book.read? "Read" : "Not Read" }</div>
-//                 <button class="remove-button" data-book-id="${book.id}">Remove</button>     
-//                </div>   
-//              </div>
-                 
-//         `;
+// function displayBook 
 //     }
 
 // function originalDisplay () {
