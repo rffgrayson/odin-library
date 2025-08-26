@@ -37,12 +37,29 @@ class Library {
     }
 }
 
+class LibraryUI {
+    constructor(libraryInstance) {
+     this.library = libraryInstance;
+     this.titleBar = document.querySelector("#title");
+     this.addBtn = document.querySelector(".new-button");
+     this.errorMsg = document.querySelector("#error-message");
+     this.libSection = document.querySelector("#library-section");
+
+     this.initializeEventListener();
+    }
+
+
+}
+
+
+
+        // this.status = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
+        // this.statusBtn = document.querySelector(`[data-book-id="${bookId}"] .status-button`);
+        // this.removeBtn = document.querySelector(`[data-book-id="${bookId}"] .remove-button`);
 // class LibraryUI {
 //     constructor () {
 //         this.Library = this.boo
-//         this.status = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
-//         this.statusBtn = document.querySelector(`[data-book-id="${bookId}"] .status-button`);
-//         this.removeBtn = document.querySelector(`[data-book-id="${bookId}"] .remove-button`);
+
 //     }
 
 
