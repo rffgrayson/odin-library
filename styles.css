@@ -12,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Cute floating elements */
 body::before {
   content: '';
   position: fixed;
@@ -127,7 +126,7 @@ form::before {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-#title {
+#title, #author {
   padding: 1rem 1.5rem;
   border: 3px solid #ffc0cb;
   border-radius: 25px;
@@ -139,7 +138,20 @@ form::before {
   min-width: 250px;
 }
 
-#title:focus {
+#pages {
+  padding: 1rem 1.5rem;
+  border: 3px solid #ffc0cb;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: rgba(255,255,255,0.9);
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100px;
+}
+
+
+#title:focus, #author:focus, #pages:focus {
   border-color: #ff6b9d;
   box-shadow: 0 0 20px rgba(255,107,157,0.3);
   transform: scale(1.02);
@@ -363,7 +375,7 @@ form::before {
   background: linear-gradient(135deg, #fc8181, #f56565);
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   .app-title {
     font-size: 2rem;
@@ -374,7 +386,7 @@ form::before {
     padding: 1.5rem;
   }
 
-  #title {
+  #title, #author, #pages {
     min-width: 200px;
   }
 
