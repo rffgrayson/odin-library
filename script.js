@@ -22,28 +22,19 @@ class Book {
 
 class Library {
     constructor() {
-        this.books = [];
+     this.books = [];
     }
 
-    addBook (title) {
-    const book = new Book (title);
-    this.books.push(book);
-    return book;
+    addBook (book) {
+     this.books.push(book);
     }
 
-    removeBook (bookId) {
-    const bookIndex = this.books.findIndex(book => book.id === bookId);
-    if (bookIndex !== -1) {
-     this.books.splice(bookIndex, 1);
-     }
+    removeBook (id) {
+     this.books.filter(book => book.id !== id);
     }
 
-    findBook (bookId) {
-        return this.books.find(book => book.id === bookId);
-    }
-
-    displayAll () {
-        return this.books;
+    findBookbyTitle (title) {
+    this.books.find(book => book.title === title);
     }
 }
 
