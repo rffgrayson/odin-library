@@ -36,6 +36,14 @@ class Library {
     findBookbyTitle (title) {
     this.books.find(book => book.title === title);
     }
+    
+    get stats () {
+        return {
+            total: this.books.length,
+            read: this.books.filter(book => book.read).length,
+            unread: this.books.filter(book => !book.read).length,
+        };
+    }
 }
 
 class LibraryUI {
