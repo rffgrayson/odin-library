@@ -1,7 +1,8 @@
 class Book {
-    constructor(title) {
+    constructor(title, author, pages,) {
      this.title = title.trim();
      this.author = author.trim();
+     this.pages = pages;
      this.read = false;
      this.id = crypto.randomUUID();
     }
@@ -36,7 +37,7 @@ class Library {
     findBookbyTitle (title) {
     this.books.find(book => book.title === title);
     }
-    
+
     get stats () {
         return {
             total: this.books.length,
@@ -46,39 +47,51 @@ class Library {
     }
 }
 
-class LibraryUI {
-    constructor(libraryInstance) {
-     this.library = libraryInstance;
-     this.titleBar = document.querySelector("#title");
-     this.addBtn = document.querySelector(".new-button");
-     this.errorMsg = document.querySelector("#error-message");
-     this.libSection = document.querySelector("#library-section");
+const newBtn = document.querySelector(".new-button");
 
-     this.initializeEventListener();
+newBtn.addEventListener("click", () => {
+    const title = document.querySelector("#title").value;
+    if (!title) {
+        console.log("Error");
+        document.querySelector(".error-message").textContent = "Please enter a title!";
+        
+        setTimeout (() => {
+    document.querySelector(".error-message").textContent = "";    
+    console.log("success");
+    },500); 
     }
-
-    displayBook (book) {
-        this.libSection.innerHTML +=  `
-            <div class="book" data-book-id = "${book.id}">
-             <div class="book-content">
-                <div class="book-info">
-                    <h3>${book.title}</h3>
-                    <p>ID: ${book.id}</p>
-                    <div class="read-status">${book.read? "既読 Read" : "未読 - Unread" }</div>
-                </div>
-                <div class="button-section">
-                    <button class="status-button"data-book-id="${book.id}">Change Status</button>
-                    <button class="remove-button" data-book-id="${book.id}">Remove</button>
-                </div>
-             </div>
-            </div>
-        `;
-    }
+});
 
 
-}
+    // constructor(libraryInstance) {
+    //  this.library = libraryInstance;
+    //  this.titleBar = document.querySelector("#title");
+    //  this.addBtn = document.querySelector(".new-button");
+    //  this.errorMsg = document.querySelector("#error-message");
+    //  this.libSection = document.querySelector("#library-section");
 
+    //  this.initializeEventListener();
+    // }
 
+    // displayBook (book) {
+    //     this.libSection.innerHTML +=  `
+    //         <div class="book" data-book-id = "${book.id}">
+    //          <div class="book-content">
+    //             <div class="book-info">
+    //                 <h3>${book.title}</h3>
+    //                 <p>ID: ${book.id}</p>
+    //                 <div class="read-status">${book.read? "既読 Read" : "未読 - Unread" }</div>
+    //             </div>
+    //             <div class="button-section">
+    //                 <button class="status-button"data-book-id="${book.id}">Change Status</button>
+    //                 <button class="remove-button" data-book-id="${book.id}">Remove</button>
+    //             </div>
+    //          </div>
+    //         </div>
+    //     `;
+    // }
+
+    
 
         // this.status = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
         // this.statusBtn = document.querySelector(`[data-book-id="${bookId}"] .status-button`);
