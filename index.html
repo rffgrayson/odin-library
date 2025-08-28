@@ -15,28 +15,37 @@
     
     <div class="decorative-line"></div>
     
-    <form action="#" method="POST">
-        <input type="text" id="title" maxlength="18" name="title" placeholder="本のタイトルを入力">
+    <form action="#" method="POST" id="book-form">
+        <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            maxlength="50" 
+            placeholder="本のタイトルを入力"
+            required
+        >
+        <input 
+            type="text" 
+            id="author" 
+            name="author" 
+            maxlength="30" 
+            placeholder="著者の名前を入力"
+            required
+        >
+        <input 
+            type="number" 
+            id="pages" 
+            name="pages" 
+            min="1" 
+            placeholder="ページ数を入力"
+            required
+        >
         <button class="new-button" type="button">本を追加</button>
         <div id="error-message" class="error-message"></div>
     </form>
+
     
     <div id="library-section">
-        <!-- Sample book to show the design -->
-        <div class="book">
-            <div class="book-content">
-                <div class="book-info">
-                    <h3>Sample Book Title</h3>
-                    <p><strong>Author:</strong> Sample Author</p>
-                    <p><strong>Pages:</strong> 250</p>
-                    <div class="read-status read">既読 - Read</div>
-                </div>
-                <div class="button-section">
-                    <button class="status-button">Toggle Status</button>
-                    <button class="remove-button">Remove</button>
-                </div>
-            </div>
-        </div>
         
         <div class="book">
             <div class="book-content">
