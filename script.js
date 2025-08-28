@@ -1,12 +1,22 @@
 class Book {
     constructor(title) {
-    this.title = title;
-    this.id = crypto.randomUUID();
-    this.read = false;
+     this.title = title.trim();
+     this.author = author.trim();
+     this.read = false;
+     this.id = crypto.randomUUID();
     }
 
-    statusChange () {
-    this.read = !this.read;
+    get displayStatus () {
+     return this.read? "✅ Read" : "📖 Unread";
+    }
+
+    toggleRead () {
+     this.read = !this.read;
+    }
+
+    markasRead () {
+        this.read = true;
+        console.log(`marked ${this.title} as read`);
     }
 }
 
