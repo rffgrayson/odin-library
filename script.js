@@ -54,18 +54,16 @@ newBtn.addEventListener("click", () => {
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value; 
-    if (!title) {
-        console.log("Error");
-        document.querySelector(".error-message").textContent = "Please enter a title!";
-        
+    if (!title || !author || !pages) {
+        document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
         setTimeout (() => {
-    document.querySelector(".error-message").textContent = "";    
-    },500); 
+            document.querySelector(".error-message").textContent = "";    
+        },500); 
+    } else {  
+        const newBook = new Book(title, author, pages);
+        myLibrary.addBook(newBook);
+        renderBook(newBook);
     }
-
-    const newBook = new Book(title, author, pages);
-    myLibrary.addBook(newBook);
-    renderBook(newBook);
 });
 
 function renderBook (book) {
@@ -78,7 +76,7 @@ function renderBook (book) {
                     <h3>${book.title}</h3>
                     <p><strong>Author:</strong> ${book.author}</p>
                     <p><strong>Pages:</strong> ${book.pages}</p>
-                    <div class="read-status not-read">${book.read ? "Read" : "Not Read"}</div>
+                    <div class="read-status not-read">${book.read ? "(๑˃ᴗ˂)ﻭ Read" : "(｡•́‿•̀｡) Not Read"}</div>
                 </div>
                 <div class="button-section">
                     <button class="status-button">Toggle Status</button>
