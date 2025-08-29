@@ -48,131 +48,45 @@ class Library {
 }
 
 const newBtn = document.querySelector(".new-button");
+const myLibrary = new Library();
 
 newBtn.addEventListener("click", () => {
     const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value; 
     if (!title) {
         console.log("Error");
         document.querySelector(".error-message").textContent = "Please enter a title!";
         
         setTimeout (() => {
     document.querySelector(".error-message").textContent = "";    
-    console.log("success");
     },500); 
     }
+
+    const newBook = new Book(title, author, pages);
+    myLibrary.addBook(newBook);
+    renderBook(newBook);
 });
 
+function renderBook (book) {
+    const bookCard = document.createElement("div");
+    bookCard.classList.add("book");
 
-    // constructor(libraryInstance) {
-    //  this.library = libraryInstance;
-    //  this.titleBar = document.querySelector("#title");
-    //  this.addBtn = document.querySelector(".new-button");
-    //  this.errorMsg = document.querySelector("#error-message");
-    //  this.libSection = document.querySelector("#library-section");
+    bookCard.innerHTML = `
+            <div class="book-content">
+                <div class="book-info">
+                    <h3>${book.title}</h3>
+                    <p><strong>Author:</strong> ${book.author}</p>
+                    <p><strong>Pages:</strong> ${book.pages}</p>
+                    <div class="read-status not-read">${book.read ? "Read" : "Not Read"}</div>
+                </div>
+                <div class="button-section">
+                    <button class="status-button">Toggle Status</button>
+                    <button class="remove-button">Remove</button>
+                </div>
+            </div>
+  `;
 
-    //  this.initializeEventListener();
-    // }
-
-    // displayBook (book) {
-    //     this.libSection.innerHTML +=  `
-    //         <div class="book" data-book-id = "${book.id}">
-    //          <div class="book-content">
-    //             <div class="book-info">
-    //                 <h3>${book.title}</h3>
-    //                 <p>ID: ${book.id}</p>
-    //                 <div class="read-status">${book.read? "既読 Read" : "未読 - Unread" }</div>
-    //             </div>
-    //             <div class="button-section">
-    //                 <button class="status-button"data-book-id="${book.id}">Change Status</button>
-    //                 <button class="remove-button" data-book-id="${book.id}">Remove</button>
-    //             </div>
-    //          </div>
-    //         </div>
-    //     `;
-    // }
-
-    
-
-        // this.status = document.querySelector(`[data-book-id="${bookId}"] .read-status`);
-        // this.statusBtn = document.querySelector(`[data-book-id="${bookId}"] .status-button`);
-        // this.removeBtn = document.querySelector(`[data-book-id="${bookId}"] .remove-button`);
-// class LibraryUI {
-//     constructor () {
-//         this.Library = this.boo
-
-//     }
-
-
-//     changeStatus() {
-
-//     }
-// }
-
-// class LibraryUI {
-//     constructor () {
-//      this.bookBox = document.querySelector("#library-section");
-//      this.newBtn = document.querySelector(".new-button");
-//      this.inputValue = document.querySelector("#title");
-//      this.errorMessage = document.querySelector("#error-message");
-//      const bookDiv = document.querySelector(`[data-book-id="${bookId}"]`);
-//      bookDiv.remove();
-//     }
-// }
-
-   
-// function displayBook 
-//     }
-
-// function originalDisplay () {
-//     for ( let i=0; i < myLibrary.length; i++) {
-//         book = myLibrary[i];
-//         console.log(book);
-//         displayBook (book);
-//     } 
-// }
-
-
-
-
-
-// newBtn.addEventListener ("click", (e)=> {
-//     e.preventDefault();
-//         if (inputValue.value.trim() === "") {
-//             errorMessage.textContent = "Please insert a book title";
-//             inputValue.focus();
-//         } else {
-//             errorMessage.textContent = "";
-//             const newBook = addBookToLibrary(inputValue.value);
-//             displayBook(newBook);
-//         ;
-//         inputValue.value = '';
-//         }
-// }
-// );
-
-// bookBox.addEventListener("click",(e)=> {
-//     const bookId = e.target.getAttribute("data-book-id");
-//         if (e.target.classList.contains("remove-button")) {
-//             removeBook(bookId);
-//         } if (e.target.classList.contains("status-button")) {
-//             console.log("first touch");
-//             changeStatus(bookId);
-//         }
-// })
-
-
-
-// changeStatus (bookId) {
-//     const 
-//     if (targetBook) {
-//         targetBook.statusChange();
-//         const 
-//         statusDiv.textContent = targetBook.read? "Read" : "Not Read";
-//          if (targetBook.read) {
-//             statusDiv.classList.remove("not-read");
-//             statusDiv.classList.toggle("read");
-//          } else {
-//             statusDiv.classList.remove("read");
-//             statusDiv.classList.toggle("not-read");}
-//     }
-//     }
+   const libSection = document.querySelector("#library-section");
+   libSection.appendChild(bookCard);
+}
