@@ -51,6 +51,7 @@ const newBtn = document.querySelector(".new-button");
 const myLibrary = new Library();
 
 newBtn.addEventListener("click", () => {
+    const form = document.querySelector("#book-form");
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value; 
@@ -61,15 +62,17 @@ newBtn.addEventListener("click", () => {
         },500); 
     } else {  
         const newBook = new Book(title, author, pages);
+        console.log(newBook);
         myLibrary.addBook(newBook);
         renderBook(newBook);
+        form.reset();
     }
 });
 
 function renderBook (book) {
     const bookCard = document.createElement("div");
-    bookCard.classList.add("book");
-
+    bookCard.classList.add(`book`);
+    bookCard.setAttribute("book-id", book.id);
     bookCard.innerHTML = `
             <div class="book-content">
                 <div class="book-info">
