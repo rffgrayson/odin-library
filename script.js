@@ -71,9 +71,9 @@ newBtn.addEventListener("click", () => {
 
 function renderBook (book) {
     const bookCard = document.createElement("div");
-    bookCard.classList.add(`book`);
-    bookCard.setAttribute("book-id", book.id);
-    bookCard.innerHTML = `
+    bookDiv.classList.add(`book`);
+    bookDiv.setAttribute("book-id", book.id);
+    bookDiv.innerHTML = `
             <div class="book-content">
                 <div class="book-info">
                     <h3>${book.title}</h3>
@@ -89,5 +89,5 @@ function renderBook (book) {
   `;
 
    const libSection = document.querySelector("#library-section");
-   libSection.appendChild(bookCard);
+   libSection.appendChild(bookDiv);
 }
