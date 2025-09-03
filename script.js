@@ -70,7 +70,7 @@ newBtn.addEventListener("click", () => {
 });
 
 function renderBook (book) {
-    const bookCard = document.createElement("div");
+    const bookDiv = document.createElement("div");
     bookDiv.classList.add(`book`);
     bookDiv.setAttribute("book-id", book.id);
     bookDiv.innerHTML = `
@@ -90,4 +90,10 @@ function renderBook (book) {
 
    const libSection = document.querySelector("#library-section");
    libSection.appendChild(bookDiv);
+
+   const removeBtn = bookDiv.querySelector(".remove-button");
+    removeBtn.addEventListener("click", () => {
+        myLibrary.removeBook(book.id);  
+        bookDiv.remove();             
+    });
 }
