@@ -31,7 +31,7 @@ class Library {
     }
 
     removeBook (id) {
-     this.books.filter(book => book.id !== id);
+     this.books = this.books.filter(book => book.id !== id);
     }
 
     findBookbyTitle (title) {
@@ -94,6 +94,7 @@ function renderBook (book) {
    const removeBtn = bookDiv.querySelector(".remove-button");
     removeBtn.addEventListener("click", () => {
         myLibrary.removeBook(book.id);  
-        bookDiv.remove();             
+        bookDiv.remove();         
+        console.log("Library after removal:", myLibrary.books);    
     });
 }
