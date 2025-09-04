@@ -93,8 +93,28 @@ function renderBook (book) {
 
    const removeBtn = bookDiv.querySelector(".remove-button");
     removeBtn.addEventListener("click", () => {
+        console.log("Trying to remove book with ID:", book.id);
         myLibrary.removeBook(book.id);  
+        console.log(bookDiv);
         bookDiv.remove();         
         console.log("Library after removal:", myLibrary.books);    
+    });
+
+    const statusBtn = bookDiv.querySelector(".status-button");
+    statusBtn.addEventListener("click", () => {
+    console.log("id",book.id);
+    console.log("bookkDiv",bookDiv);
+    console.log("book",book);
+    book.toggleRead();
+     console.log("book",book);
+
+    const statusDiv = bookDiv.querySelector(".read-status"); 
+        if (book.read === false) {
+            statusDiv.classList.replace("not-read", "read");
+            statusDiv.textContent = "(๑˃ᴗ˂)ﻭ Read";      
+        }   else {
+            statusDiv.classList.replace("read", "not-read");
+            statusDiv.textContent = "(｡•́‿•̀｡) Not Read";      
+        }
     });
 }
