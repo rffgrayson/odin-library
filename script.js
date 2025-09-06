@@ -117,14 +117,14 @@ newBtn.addEventListener("click", () => {
         myLibrary.addBook(newBook);
         const newBookDiv = createBookElement(newBook);
         addBookToLibrarySection(newBookDiv);
-        removeBtnInitilizaer(newBookDiv, newBook);
+        bookBtnInstance(newBookDiv, newBook);
         form.reset();
         console.log("newBookDIv", newBookDiv);
     }
 });
 
 
-function removeBtnInitilizaer (bookDiv, book) {
+function bookBtnInstance (bookDiv, book) {
     const removeBtn = bookDiv.querySelector(".remove-button");
     removeBtn.addEventListener("click", () => {
     myLibrary.removeBook(book.id);
