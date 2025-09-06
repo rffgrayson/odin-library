@@ -52,12 +52,7 @@ const myLibrary = new Library();
 
 
 
-// function renderBook (book) {
 
-//     const statusBtn = bookDiv.querySelector(".status-button");
-//     statusBtn.addEventListener("click", () => {
-//     });
-// }
 
 // DOM 
 
@@ -136,5 +131,11 @@ function removeBtnInitilizaer (bookDiv, book) {
     removeBookFromDOM (bookDiv);
     console.log("myLibrary", myLibrary);
 });
+
+    const statusBtn = bookDiv.querySelector(".status-button");
+    statusBtn.addEventListener("click", () => {
+    book.toggleRead();
+    changeStatusDisplay(bookDiv,book.read);
+    });
 }
 
