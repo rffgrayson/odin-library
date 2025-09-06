@@ -1,5 +1,6 @@
 class Book {
-    constructor(title, author, pages,) {
+
+    constructor(title, author, pages) {
      this.title = title.trim();
      this.author = author.trim();
      this.pages = pages;
@@ -35,7 +36,7 @@ class Library {
     }
 
     findBookbyTitle (title) {
-    this.books.find(book => book.title === title);
+     return this.books.find(book => book.title === title);
     }
 
     get stats () {
@@ -46,6 +47,7 @@ class Library {
         };
     }
 }
+
 
 const newBtn = document.querySelector(".new-button");
 const myLibrary = new Library();
@@ -70,6 +72,20 @@ newBtn.addEventListener("click", () => {
 });
 
 function renderBook (book) {
+
+   const removeBtn = bookDiv.querySelector(".remove-button");
+    removeBtn.addEventListener("click", () => {
+    
+    });
+
+    const statusBtn = bookDiv.querySelector(".status-button");
+    statusBtn.addEventListener("click", () => {
+    });
+}
+
+// DOM 
+
+function createBookElement (book) {
     const bookDiv = document.createElement("div");
     bookDiv.classList.add(`book`);
     bookDiv.setAttribute("book-id", book.id);
@@ -88,33 +104,27 @@ function renderBook (book) {
             </div>
   `;
 
-   const libSection = document.querySelector("#library-section");
-   libSection.appendChild(bookDiv);
+  return bookDiv;
+}
 
-   const removeBtn = bookDiv.querySelector(".remove-button");
-    removeBtn.addEventListener("click", () => {
-        console.log("Trying to remove book with ID:", book.id);
-        myLibrary.removeBook(book.id);  
-        console.log(bookDiv);
+function addBookToLibrarySection (bookDiv) {
+    const libSection = document.querySelector("#library-section");
+    libSection.appendChild(bookDiv);
+}
+
+function removeBookFromDOM (bookDiv) { 
         bookDiv.remove();         
-        console.log("Library after removal:", myLibrary.books);    
-    });
+}
 
-    const statusBtn = bookDiv.querySelector(".status-button");
-    statusBtn.addEventListener("click", () => {
-    console.log("id",book.id);
-    console.log("bookkDiv",bookDiv);
-    console.log("book",book);
-    book.toggleRead();
-     console.log("book",book);
+function changeStatusDisplay (bookDiv,isRead) {
 
     const statusDiv = bookDiv.querySelector(".read-status"); 
-        if (book.read === false) {
+    console.log (statusDiv);
+        if (isRead) {
             statusDiv.classList.replace("not-read", "read");
             statusDiv.textContent = "(๑˃ᴗ˂)ﻭ Read";      
         }   else {
             statusDiv.classList.replace("read", "not-read");
             statusDiv.textContent = "(｡•́‿•̀｡) Not Read";      
         }
-    });
 }
