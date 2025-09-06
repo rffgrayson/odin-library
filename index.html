@@ -40,27 +40,21 @@
             placeholder="pages here (≧▽≦)"
             required
         >
+        <fieldset>
+            <legend>Have you completed the book?:</legend>
+            <input 
+                type="checkbox" 
+                id="read-checkbox" 
+                name="status"
+            >
+        </fieldset>
         <button class="new-button" type="button">Add Book (✿◠‿◠)</button>
         <div id="error-message" class="error-message"></div>
     </form>
 
     
     <div id="library-section">
-        
-        <div class="book">
-            <div class="book-content">
-                <div class="book-info">
-                    <h3>Another Book</h3>
-                    <p><strong>Author:</strong> Another Author</p>
-                    <p><strong>Pages:</strong> 320</p>
-                    <div class="read-status not-read">(｡•́‿•̀｡) Unread</div>
-                </div>
-                <div class="button-section">
-                    <button class="status-button">Toggle Status</button>
-                    <button class="remove-button">Remove</button>
-                </div>
-            </div>
-        </div>
+
     </div>
     
     <script src="./script.js"></script>
