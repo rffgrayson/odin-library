@@ -54,11 +54,6 @@ const myLibrary = new Library();
 
 // function renderBook (book) {
 
-//    const removeBtn = bookDiv.querySelector(".remove-button");
-//     removeBtn.addEventListener("click", () => {
-    
-//     });
-
 //     const statusBtn = bookDiv.querySelector(".status-button");
 //     statusBtn.addEventListener("click", () => {
 //     });
@@ -84,7 +79,6 @@ function createBookElement (book) {
                 </div>
             </div>
   `;
-
   return bookDiv;
 }
 
@@ -98,7 +92,6 @@ function removeBookFromDOM (bookDiv) {
 }
 
 function changeStatusDisplay (bookDiv,isRead) {
-
     const statusDiv = bookDiv.querySelector(".read-status"); 
     console.log (statusDiv);
         if (isRead) {
@@ -129,6 +122,17 @@ newBtn.addEventListener("click", () => {
         myLibrary.addBook(newBook);
         const newBookDiv = createBookElement(newBook);
         addBookToLibrarySection(newBookDiv);
+        removeBtnInitilizaer(newBookDiv, newBook);
         form.reset();
+        console.log("newBookDIv", newBookDiv);
     }
 });
+
+
+function removeBtnInitilizaer (bookDiv, book) {
+    const removeBtn = bookDiv.querySelector(".remove-button");
+    removeBtn.addEventListener("click", () => {
+    myLibrary.removeBook(book.id);
+    console.log("myLibrary", myLibrary);
+});
+}
