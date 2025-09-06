@@ -147,14 +147,80 @@ form::before {
   background: rgba(255,255,255,0.9);
   outline: none;
   transition: all 0.3s ease;
-  width: 100px;
+  width: 220px;
 }
 
+fieldset {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 3px solid #ffc0cb;
+  border-radius: 25px;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255,255,255,0.9);
+  min-width: 250px; 
+  height: 60px;     
+  box-sizing: border-box;
+}
 
-#title:focus, #author:focus, #pages:focus {
+fieldset legend {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 0.85rem;
+  color: #666;
+  padding: 0 0.5rem;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  margin-left: 0.5rem;
+}
+
+fieldset:focus-within {
   border-color: #ff6b9d;
   box-shadow: 0 0 20px rgba(255,107,157,0.3);
   transform: scale(1.02);
+}
+
+
+fieldset legend::before {
+  content: '📖 ';
+  margin-right: 0.5rem;
+}
+
+#status {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 3px solid #ffc0cb;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+#status:hover {
+  border-color: #ff6b9d;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255,107,157,0.3);
+}
+
+#status:checked {
+  background: linear-gradient(135deg, #48bb78, #38a169);
+  border-color: #48bb78;
+  box-shadow: 0 0 20px rgba(72,187,120,0.4);
+}
+
+#status:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .new-button {
