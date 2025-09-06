@@ -1,15 +1,19 @@
 class Book {
 
-    constructor(title, author, pages) {
+    constructor(title, author, pages, read = false) {
      this.title = title.trim();
      this.author = author.trim();
      this.pages = pages;
-     this.read = false;
+     this.read = read;
      this.id = crypto.randomUUID();
     }
 
     get displayStatus () {
-     return this.read? "✅ Read" : "📖 Unread";
+     return this.read? "(๑˃ᴗ˂)ﻭ Read" : "(｡•́‿•̀｡) Not Read";
+    }
+
+    get classStatus () {
+     return this.read? "read" : "not-read";
     }
 
     toggleRead () {
@@ -66,7 +70,7 @@ function createBookElement (book) {
                     <h3>${book.title}</h3>
                     <p><strong>Author:</strong> ${book.author}</p>
                     <p><strong>Pages:</strong> ${book.pages}</p>
-                    <div class="read-status not-read">${book.read ? "(๑˃ᴗ˂)ﻭ Read" : "(｡•́‿•̀｡) Not Read"}</div>
+                    <div class="read-status ${book.classStatus}">${book.displayStatus}</div>
                 </div>
                 <div class="button-section">
                     <button class="status-button">Toggle Status</button>
@@ -106,13 +110,14 @@ newBtn.addEventListener("click", () => {
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
     const pages = document.querySelector("#pages").value; 
+    const status = document.querySelector("#status").checked;
     if (!title || !author || !pages) {
         document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
         setTimeout (() => {
             document.querySelector(".error-message").textContent = "";    
         },500); 
     } else {  
-        const newBook = new Book(title, author, pages);
+        const newBook = new Book(title, author, pages, status);
         myLibrary.addBook(newBook);
         const newBookDiv = createBookElement(newBook);
         addBookToLibrarySection(newBookDiv);
