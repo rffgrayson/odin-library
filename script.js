@@ -133,6 +133,8 @@ function removeBtnInitilizaer (bookDiv, book) {
     const removeBtn = bookDiv.querySelector(".remove-button");
     removeBtn.addEventListener("click", () => {
     myLibrary.removeBook(book.id);
+    removeBookFromDOM (bookDiv);
     console.log("myLibrary", myLibrary);
 });
 }
+
