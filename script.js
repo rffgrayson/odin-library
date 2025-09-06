@@ -48,40 +48,21 @@ class Library {
     }
 }
 
-
-const newBtn = document.querySelector(".new-button");
 const myLibrary = new Library();
 
-newBtn.addEventListener("click", () => {
-    const form = document.querySelector("#book-form");
-    const title = document.querySelector("#title").value;
-    const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value; 
-    if (!title || !author || !pages) {
-        document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
-        setTimeout (() => {
-            document.querySelector(".error-message").textContent = "";    
-        },500); 
-    } else {  
-        const newBook = new Book(title, author, pages);
-        console.log(newBook);
-        myLibrary.addBook(newBook);
-        renderBook(newBook);
-        form.reset();
-    }
-});
 
-function renderBook (book) {
 
-   const removeBtn = bookDiv.querySelector(".remove-button");
-    removeBtn.addEventListener("click", () => {
+// function renderBook (book) {
+
+//    const removeBtn = bookDiv.querySelector(".remove-button");
+//     removeBtn.addEventListener("click", () => {
     
-    });
+//     });
 
-    const statusBtn = bookDiv.querySelector(".status-button");
-    statusBtn.addEventListener("click", () => {
-    });
-}
+//     const statusBtn = bookDiv.querySelector(".status-button");
+//     statusBtn.addEventListener("click", () => {
+//     });
+// }
 
 // DOM 
 
@@ -128,3 +109,26 @@ function changeStatusDisplay (bookDiv,isRead) {
             statusDiv.textContent = "(｡•́‿•̀｡) Not Read";      
         }
 }
+
+// event listener
+
+const newBtn = document.querySelector(".new-button");
+newBtn.addEventListener("click", () => {
+    const form = document.querySelector("#book-form");
+    const title = document.querySelector("#title").value;
+    const author = document.querySelector("#author").value;
+    const pages = document.querySelector("#pages").value; 
+    if (!title || !author || !pages) {
+        document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
+        setTimeout (() => {
+            document.querySelector(".error-message").textContent = "";    
+        },500); 
+    } else {  
+        const newBook = new Book(title, author, pages);
+        console.log(newBook);
+        myLibrary.addBook(newBook);
+        const newBookDiv = createBookElement(newBook);
+        addBookToLibrarySection(newBookDiv);
+        form.reset();
+    }
+});
