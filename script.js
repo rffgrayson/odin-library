@@ -113,13 +113,11 @@ newBtn.addEventListener("click", () => {
         },500); 
     } else {  
         const newBook = new Book(title, author, pages);
-        console.log(newBook);
         myLibrary.addBook(newBook);
         const newBookDiv = createBookElement(newBook);
         addBookToLibrarySection(newBookDiv);
         bookBtnInstance(newBookDiv, newBook);
         form.reset();
-        console.log("newBookDIv", newBookDiv);
     }
 });
 
@@ -129,7 +127,6 @@ function bookBtnInstance (bookDiv, book) {
     removeBtn.addEventListener("click", () => {
     myLibrary.removeBook(book.id);
     removeBookFromDOM (bookDiv);
-    console.log("myLibrary", myLibrary);
 });
 
     const statusBtn = bookDiv.querySelector(".status-button");
