@@ -333,15 +333,6 @@ fieldset legend::before {
   position: relative;
 }
 
-.book-info h3::after {
-  content: '✨';
-  position: absolute;
-  right: -30px;
-  top: -5px;
-  font-size: 1rem;
-  animation: twinkle 2s ease-in-out infinite;
-}
-
 @keyframes twinkle {
   0%, 100% { opacity: 0.5; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.2); }
