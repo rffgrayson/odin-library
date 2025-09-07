@@ -28,10 +28,7 @@ class Book {
      this.read = !this.read;
     }
 
-    markasRead () {
-        this.read = true;
-        console.log(`marked ${this.title} as read`);
-    }
+
 }
 
 class Library {
@@ -45,18 +42,6 @@ class Library {
 
     removeBook (id) {
      this.books = this.books.filter(book => book.id !== id);
-    }
-
-    findBookbyTitle (title) {
-     return this.books.find(book => book.title === title);
-    }
-
-    get stats () {
-        return {
-            total: this.books.length,
-            read: this.books.filter(book => book.read).length,
-            unread: this.books.filter(book => !book.read).length,
-        };
     }
 }
 
