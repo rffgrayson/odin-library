@@ -79,7 +79,6 @@ function removeBookFromDOM (bookDiv) {
 
 function changeStatusDisplay (bookDiv,isRead) {
     const statusDiv = bookDiv.querySelector(".read-status"); 
-    console.log (statusDiv);
         if (isRead) {
             statusDiv.classList.replace("not-read", "read");
             statusDiv.textContent = "(๑˃ᴗ˂)ﻭ Read";      
@@ -98,7 +97,7 @@ newBtn.addEventListener("click", () => {
     const author = document.querySelector("#author").value;
     const pages = parseInt(document.querySelector("#pages").value); 
     const status = document.querySelector("#status").checked;
-    if (!title || !author || !pages || pages < 0) {
+    if (!title || !author || !pages || pages <= 0 || isNaN(pages)) {
         document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
         setTimeout (() => {
             document.querySelector(".error-message").textContent = "";    
