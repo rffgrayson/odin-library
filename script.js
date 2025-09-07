@@ -27,8 +27,6 @@ class Book {
     toggleRead () {
      this.read = !this.read;
     }
-
-
 }
 
 class Library {
@@ -98,14 +96,16 @@ newBtn.addEventListener("click", () => {
     const form = document.querySelector("#book-form");
     const title = document.querySelector("#title").value;
     const author = document.querySelector("#author").value;
-    const pages = document.querySelector("#pages").value; 
+    const pages = parseInt(document.querySelector("#pages").value); 
     const status = document.querySelector("#status").checked;
-    if (!title || !author || !pages) {
+    if (!title || !author || !pages || pages < 0) {
         document.querySelector(".error-message").textContent = "Please insert valid value! (ಥ﹏ಥ)";        
         setTimeout (() => {
             document.querySelector(".error-message").textContent = "";    
-        },500); 
-    } else {  
+        },1500); 
+    } 
+    
+    else {  
         const newBook = new Book(title, author, pages, status);
         myLibrary.addBook(newBook);
         const newBookDiv = createBookElement(newBook);
