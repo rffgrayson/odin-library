@@ -1,8 +1,16 @@
 class Book {
 
+    static capitalize(str) {
+        return str.trim()
+        .toLowerCase()
+        .split(" ")
+        .map(word => word.length > 0 ? word.charAt(0).toUpperCase() + word.slice(1) : "")
+        .join(" ");
+    }
+
     constructor(title, author, pages, read = false) {
-     this.title = title.trim();
-     this.author = author.trim();
+     this.title = Book.capitalize(title);
+     this.author = Book.capitalize(author);
      this.pages = pages;
      this.read = read;
      this.id = crypto.randomUUID();
@@ -53,10 +61,6 @@ class Library {
 }
 
 const myLibrary = new Library();
-
-
-
-
 
 // DOM 
 
